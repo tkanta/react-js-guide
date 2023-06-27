@@ -1,0 +1,36 @@
+
+
+[eslint] Failed to load plugin 'flowtype' declared in 'package.json » eslint-config-react-app': Cannot find module 'eslint/use-at-your-own-risk'
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://stackoverflow.com/questions/70397587/failed-to-load-plugin-flowtype-declared-in-package-json-eslint-config-react
+I fix this just deleting:
+
+"eslintConfig": {
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ]
+}
+on package.json
+
+
+
+
+@babel/plugin-proposal-private-property-in-object
+------------------------------------------------------------------------
+https://www.npmjs.com/package/@babel/plugin-proposal-private-property-in-object?activeTab=code
+This plugin transforms checks for a private property in an object
+
+
+One of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
